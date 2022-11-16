@@ -41,7 +41,6 @@ int findMax(std::vector<int> &integers){
     return integers[integers.size()-1];
 }
 
-
 /**
  * Main driver program.
 */
@@ -52,12 +51,6 @@ int main(int argc, char *argv[]){
     std::vector<int> integers; // Stores randomly generated integers.
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
     std::sort(integers.begin(), integers.end()); // Sort integers in ascending order.
-    
-    for (int i = 0; i<numberOfIntegers; i++){
-        std::cout<<integers[i]<<" ";
-    }std::cout<<std::endl;
-
-    std::cout<<findMax(integers)<< " "<< findMin(integers)<<std::endl;
 
     return 1;
 }
