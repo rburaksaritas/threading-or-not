@@ -27,6 +27,7 @@ int generateNumbers(int N, std::vector<int> &integers){
     return 1;
 }
 
+
 /**
  * Main driver program.
 */
@@ -36,5 +37,7 @@ int main(int argc, char *argv[]){
     
     std::vector<int> integers; // Stores randomly generated integers.
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
+    std::sort(integers.begin(), integers.end()); // Sort integers in ascending order.
+    
     return 1;
 }
