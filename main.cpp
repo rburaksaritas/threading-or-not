@@ -27,6 +27,20 @@ int generateNumbers(int N, std::vector<int> &integers){
     return 1;
 }
 
+/**
+ * Returns the first (smallest) element of sorted vector<int> integers.
+*/
+int findMin(std::vector<int> &integers){
+    return integers[0];
+}
+
+/**
+ * Returns the last (largest) element of sorted vector<int> integers.
+*/
+int findMax(std::vector<int> &integers){
+    return integers[integers.size()-1];
+}
+
 
 /**
  * Main driver program.
@@ -39,5 +53,12 @@ int main(int argc, char *argv[]){
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
     std::sort(integers.begin(), integers.end()); // Sort integers in ascending order.
     
+    for (int i = 0; i<numberOfIntegers; i++){
+        std::cout<<integers[i]<<" ";
+    }std::cout<<std::endl;
+
+    std::cout<<findMax(integers)<< " "<< findMin(integers)<<std::endl;
+
     return 1;
 }
+
