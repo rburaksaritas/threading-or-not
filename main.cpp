@@ -49,16 +49,42 @@ int findRange(std::vector<int> &integers){
 }
 
 /**
+ * Returns the mode of sorted vector<int> integers.
+*/
+int findMode(std::vector<int> &integers){
+    int currentNumber = integers[0];
+    int mode = currentNumber;
+    int currentCount = 0;
+    int maxCount = 0;
+    for (int i = 0; i<integers.size(); i++){
+        if (currentNumber == integers[i]){
+            currentCount++;
+        } else{
+            if(currentCount>maxCount){
+                maxCount = currentCount;
+                mode = currentNumber;
+            }
+            currentNumber = integers[i];
+            currentCount = 1;
+        }
+    }
+    return mode;
+}
+
+/**
  * Main driver program.
 */
 int main(int argc, char *argv[]){
     int numberOfIntegers = atoi(argv[1]);
-    int numberOfThreads = atoi(argv[2]); // Optional functionality.
+    if (argv[2]){
+        int numberOfThreads = atoi(argv[2]); // Optional functionality.  
+    }
+    
     
     std::vector<int> integers; // Stores randomly generated integers.
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
     std::sort(integers.begin(), integers.end()); // Sort integers in ascending order.
-
+    
     return 1;
 }
 
