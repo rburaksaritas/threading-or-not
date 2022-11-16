@@ -72,6 +72,18 @@ int findMode(std::vector<int> &integers){
 }
 
 /**
+ * Returns the median of sorted vector<int> integers.
+*/
+double findMedian(std::vector<int> integers){
+    int size = integers.size();
+    if (size % 2 == 0){
+        return ((double)(integers[size/2-1] + integers[size/2])/(double)2);
+    } else{
+        return (integers[size/2]);
+    }
+}
+
+/**
  * Main driver program.
 */
 int main(int argc, char *argv[]){
@@ -79,7 +91,6 @@ int main(int argc, char *argv[]){
     if (argv[2]){
         int numberOfThreads = atoi(argv[2]); // Optional functionality.  
     }
-    
     
     std::vector<int> integers; // Stores randomly generated integers.
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
