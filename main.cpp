@@ -42,6 +42,13 @@ int findMax(std::vector<int> &integers){
 }
 
 /**
+ * Returns the range of integers. (max-min)
+*/
+int findRange(std::vector<int> &integers){
+    return (integers[integers.size()-1] - integers[0]);
+}
+
+/**
  * Main driver program.
 */
 int main(int argc, char *argv[]){
