@@ -82,6 +82,17 @@ double findMedian(std::vector<int> integers){
         return (integers[size/2]);
     }
 }
+ /**
+  * Sums up all elements of vector<int> and returns result.
+ */
+int findSum(std::vector<int> integers){
+    int size = integers.size();
+    int sum = 0;
+    for (int i = 0; i<size; i++){
+        sum += integers[i];
+    }
+    return sum;
+}
 
 /**
  * Main driver program.
