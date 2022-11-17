@@ -30,28 +30,28 @@ int generateNumbers(int N, std::vector<int> &integers){
 /**
  * Returns the first (smallest) element of sorted vector<int> integers.
 */
-int findMin(std::vector<int> &integers){
+int findMin(std::vector<int> integers){
     return integers[0];
 }
 
 /**
  * Returns the last (largest) element of sorted vector<int> integers.
 */
-int findMax(std::vector<int> &integers){
+int findMax(std::vector<int> integers){
     return integers[integers.size()-1];
 }
 
 /**
  * Returns the range of integers. (max-min)
 */
-int findRange(std::vector<int> &integers){
+int findRange(std::vector<int> integers){
     return (integers[integers.size()-1] - integers[0]);
 }
 
 /**
  * Returns the mode of sorted vector<int> integers.
 */
-int findMode(std::vector<int> &integers){
+int findMode(std::vector<int> integers){
     int currentNumber = integers[0];
     int mode = currentNumber;
     int currentCount = 0;
