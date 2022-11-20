@@ -131,6 +131,9 @@ float findStandardDeviation(std::vector<int> integers, double arithmeticMean) {
 double findInterquartileRange(std::vector<int> integers){
     int halfSize = integers.size()/2;
     std::vector<int> lowerHalf(integers.begin(), integers.begin() + halfSize);
+    if (integers.size()%2!=0){
+        halfSize++;
+    }
     std::vector<int> higherHalf(integers.begin() + halfSize, integers.end());
     double lowerMedian = findMedian(lowerHalf);
     double higherMedian = findMedian(higherHalf);
@@ -149,7 +152,7 @@ int main(int argc, char *argv[]){
     std::vector<int> integers; // Stores randomly generated integers.
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
     std::sort(integers.begin(), integers.end()); // Sort integers in ascending order.
-    
+
     return 1;
 }
 
