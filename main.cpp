@@ -95,10 +95,21 @@ int findSum(std::vector<int> integers){
 }
 
 /**
- * Returns sum of elements divided by number of elements.
+ * Returns sum of integers divided by number of integers.
 */
-double findArithmeticMean(int sum, int length){
-    return ((double)sum/(double)length);
+double findArithmeticMean(int sum, int size){
+    return ((double)sum/(double)size);
+}
+
+/**
+ * Returns number of integers divided by sum of (1/integer) for each integer.
+*/
+double findHarmonicMean(std::vector<int> integers, int size){
+    double sum = 0; 
+    for (int i = 0; i < size; i++){
+        sum += double(1)/integers[i];
+    }
+    return ((double)size/sum);
 }
 
 /**
