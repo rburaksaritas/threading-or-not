@@ -104,12 +104,25 @@ double findArithmeticMean(int sum, int size){
 /**
  * Returns number of integers divided by sum of (1/integer) for each integer.
 */
-double findHarmonicMean(std::vector<int> integers, int size){
+double findHarmonicMean(std::vector<int> integers){
     double sum = 0; 
+    int size = integers.size();
     for (int i = 0; i < size; i++){
         sum += double(1)/integers[i];
     }
     return ((double)size/sum);
+}
+
+/**
+ * Returns standard deviation of integers.
+*/
+float findStandardDeviation(std::vector<int> integers, double arithmeticMean) {
+    int size = integers.size();
+    double sum = 0;
+    for(int i = 0; i < size; i++) {
+        sum += pow(integers[i] - arithmeticMean, 2);
+    }
+    return sqrt((double)sum/(size - 1));
 }
 
 /**
