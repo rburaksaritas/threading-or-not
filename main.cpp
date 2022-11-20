@@ -126,6 +126,18 @@ float findStandardDeviation(std::vector<int> integers, double arithmeticMean) {
 }
 
 /**
+ * Returns interquartile range of integers.
+*/
+double findInterquartileRange(std::vector<int> integers){
+    int halfSize = integers.size()/2;
+    std::vector<int> lowerHalf(integers.begin(), integers.begin() + halfSize);
+    std::vector<int> higherHalf(integers.begin() + halfSize, integers.end());
+    double lowerMedian = findMedian(lowerHalf);
+    double higherMedian = findMedian(higherHalf);
+    return (higherMedian - lowerMedian);
+}
+
+/**
  * Main driver program.
 */
 int main(int argc, char *argv[]){
