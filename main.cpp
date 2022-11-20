@@ -95,6 +95,13 @@ int findSum(std::vector<int> integers){
 }
 
 /**
+ * Returns sum of elements divided by number of elements.
+*/
+double findArithmeticMean(int sum, int length){
+    return ((double)sum/(double)length);
+}
+
+/**
  * Main driver program.
 */
 int main(int argc, char *argv[]){
