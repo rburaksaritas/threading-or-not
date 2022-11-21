@@ -141,6 +141,37 @@ double findInterquartileRange(std::vector<int> integers){
 }
 
 /**
+ * Executes the functions in one thread.
+*/
+int oneThread(std::vector<int> integers){
+    // time start
+    int size = integers.size();
+    int min = findMin(integers);
+    int max = findMax(integers);
+    int range = findRange(integers);
+    int mode = findMode(integers);
+    double median = findMedian(integers);
+    int sum = findSum(integers);
+    double arithmeticMean = findArithmeticMean(sum, size);
+    double harmonicMean = findHarmonicMean(integers);
+    double standardDeviation = findStandardDeviation(integers, arithmeticMean);
+    double interquartileRange = findInterquartileRange(integers);
+    // time end
+    printf("%d\n", min);
+    printf("%d\n", max);
+    printf("%d\n", range);
+    printf("%d\n", mode);
+    printf("%g\n", median);
+    printf("%d\n", sum);
+    printf("%.5f\n", arithmeticMean);
+    printf("%.5f\n", harmonicMean);
+    printf("%.5f\n", standardDeviation);
+    printf("%g\n", interquartileRange);
+    // print time
+    return 1;
+}
+
+/**
  * Main driver program.
 */
 int main(int argc, char *argv[]){
@@ -152,6 +183,8 @@ int main(int argc, char *argv[]){
     std::vector<int> integers; // Stores randomly generated integers.
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
     std::sort(integers.begin(), integers.end()); // Sort integers in ascending order.
+
+    oneThread(integers); // execute functions in a single thread.
 
     return 1;
 }
