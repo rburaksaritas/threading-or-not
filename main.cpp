@@ -142,38 +142,57 @@ double findInterquartileRange(std::vector<int> integers){
 }
 
 /**
+ * Prints results to a file.
+*/
+int printResults(int &min, int &max, int &range, int &mode, double &median, 
+            int &sum, double &arithmeticMean, double &harmonicMean, 
+            double &standardDeviation, double &interquartileRange, 
+            std::chrono::duration<double> &elapsed, int outputCounter){
+        
+        std::string filename = "output" + std::to_string(outputCounter) + ".txt";
+        FILE * output;
+        output = fopen(filename.c_str(), "w");
+        fprintf(output, "%d\n", min);
+        fprintf(output, "%d\n", max);
+        fprintf(output, "%d\n", range);
+        fprintf(output, "%d\n", mode);
+        fprintf(output, "%g\n", median);
+        fprintf(output, "%d\n", sum);
+        fprintf(output, "%.5f\n", arithmeticMean);
+        fprintf(output, "%.5f\n", harmonicMean);
+        fprintf(output, "%.5f\n", standardDeviation);
+        fprintf(output, "%g\n", interquartileRange);
+        fprintf(output, "%.5f", elapsed.count());
+        fclose(output);
+            
+        return 1;
+}
+
+/**
  * Executes the functions in one thread.
  * Keeps track of time with the help of <chrono>.
 */
-int oneThread(std::vector<int> integers){
+int oneThread(std::vector<int> integers, int &size, int &min, int &max, int &range, 
+            int &mode, double &median, int &sum, double &arithmeticMean, 
+            double &harmonicMean, double &standardDeviation, double &interquartileRange, 
+            std::chrono::duration<double> &elapsed){
     std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
     
-    int size = integers.size();
-    int min = findMin(integers);
-    int max = findMax(integers);
-    int range = findRange(integers);
-    int mode = findMode(integers);
-    double median = findMedian(integers);
-    int sum = findSum(integers);
-    double arithmeticMean = findArithmeticMean(sum, size);
-    double harmonicMean = findHarmonicMean(integers);
-    double standardDeviation = findStandardDeviation(integers, arithmeticMean);
-    double interquartileRange = findInterquartileRange(integers);
+    size = integers.size();
+    min = findMin(integers);
+    max = findMax(integers);
+    range = findRange(integers);
+    mode = findMode(integers);
+    median = findMedian(integers);
+    sum = findSum(integers);
+    arithmeticMean = findArithmeticMean(sum, size);
+    harmonicMean = findHarmonicMean(integers);
+    standardDeviation = findStandardDeviation(integers, arithmeticMean);
+    interquartileRange = findInterquartileRange(integers);
     
     std::chrono::steady_clock::time_point finish = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = finish - start;
-    
-    printf("%d\n", min);
-    printf("%d\n", max);
-    printf("%d\n", range);
-    printf("%d\n", mode);
-    printf("%g\n", median);
-    printf("%d\n", sum);
-    printf("%.5f\n", arithmeticMean);
-    printf("%.5f\n", harmonicMean);
-    printf("%.5f\n", standardDeviation);
-    printf("%g\n", interquartileRange);
-    printf("%.5f\n", elapsed.count());
+    elapsed = finish - start;
+
     return 1;
 }
 
@@ -190,7 +209,14 @@ int main(int argc, char *argv[]){
     generateNumbers(numberOfIntegers, integers); // Generate and store integers.
     std::sort(integers.begin(), integers.end()); // Sort integers in ascending order.
 
-    oneThread(integers); // execute functions in a single thread.
+    int size, min, max, range, mode, sum = 0;
+    double  median, arithmeticMean, harmonicMean, standardDeviation, interquartileRange = 0;
+    std::chrono::duration<double> elapsed;
+
+    oneThread(integers, size, min, max, range, mode, median, sum, arithmeticMean, 
+    harmonicMean, standardDeviation, interquartileRange, elapsed); // execute functions in a single thread.
+    printResults(min, max, range, mode, median, sum, arithmeticMean, harmonicMean, 
+    standardDeviation, interquartileRange, elapsed, 1); // print results to an output file.
 
     return 1;
 }
