@@ -3,6 +3,7 @@
 #include <sstream>
 #include <random>
 #include <vector>
+#include <chrono>
 
 /**
  * Generates a random integer between 1000 and 10000.
@@ -142,9 +143,11 @@ double findInterquartileRange(std::vector<int> integers){
 
 /**
  * Executes the functions in one thread.
+ * Keeps track of time with the help of <chrono>.
 */
 int oneThread(std::vector<int> integers){
-    // time start
+    std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+    
     int size = integers.size();
     int min = findMin(integers);
     int max = findMax(integers);
@@ -156,7 +159,10 @@ int oneThread(std::vector<int> integers){
     double harmonicMean = findHarmonicMean(integers);
     double standardDeviation = findStandardDeviation(integers, arithmeticMean);
     double interquartileRange = findInterquartileRange(integers);
-    // time end
+    
+    std::chrono::steady_clock::time_point finish = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = finish - start;
+    
     printf("%d\n", min);
     printf("%d\n", max);
     printf("%d\n", range);
@@ -167,7 +173,7 @@ int oneThread(std::vector<int> integers){
     printf("%.5f\n", harmonicMean);
     printf("%.5f\n", standardDeviation);
     printf("%g\n", interquartileRange);
-    // print time
+    printf("%.5f\n", elapsed.count());
     return 1;
 }
 
