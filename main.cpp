@@ -204,6 +204,11 @@ int fiveThreads(std::vector<int> integers, int &size, int &min, int &max, int &r
             double &harmonicMean, double &standardDeviation, double &interquartileRange, 
             std::chrono::duration<double> &elapsed);
 
+ int tenThreads(std::vector<int> integers, int &size, int &min, int &max, int &range, 
+            int &mode, double &median, int &sum, double &arithmeticMean, 
+            double &harmonicMean, double &standardDeviation, double &interquartileRange, 
+            std::chrono::duration<double> &elapsed);           
+
 /**
  * Main driver program.
 */
@@ -235,6 +240,15 @@ int main(int argc, char *argv[]){
     printResults(min, max, range, mode, median, sum, arithmeticMean, harmonicMean, 
     standardDeviation, interquartileRange, elapsed_2, 2); // print results to an output file.
     
+    size = 0; min = 0; max = 0; range = 0; mode = 0; sum = 0;
+    median = 0.0; arithmeticMean = 0.0; harmonicMean = 0.0; standardDeviation = 0.0; interquartileRange = 0.0;
+    std::chrono::duration<double> elapsed_3;
+
+    tenThreads(integers, size, min, max, range, mode, median, sum, arithmeticMean, 
+    harmonicMean, standardDeviation, interquartileRange, elapsed_3); // execute functions in 10 threads.
+    printResults(min, max, range, mode, median, sum, arithmeticMean, harmonicMean, 
+    standardDeviation, interquartileRange, elapsed_3, 3); // print results to an output file.
+
     return 1;
 }
 
