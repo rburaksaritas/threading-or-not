@@ -98,7 +98,9 @@ int findSum(std::vector<int> integers){
 /**
  * Returns sum of integers divided by number of integers.
 */
-double findArithmeticMean(int sum, int size){
+double findArithmeticMean(std::vector<int> integers){
+    int sum = findSum(integers);
+    int size = integers.size();
     return ((double)sum/(double)size);
 }
 
@@ -117,7 +119,8 @@ double findHarmonicMean(std::vector<int> integers){
 /**
  * Returns standard deviation of integers.
 */
-float findStandardDeviation(std::vector<int> integers, double arithmeticMean) {
+float findStandardDeviation(std::vector<int> integers) {
+    double arithmeticMean = findArithmeticMean(integers);
     int size = integers.size();
     double sum = 0;
     for(int i = 0; i < size; i++) {
@@ -185,9 +188,9 @@ int oneThread(std::vector<int> integers, int &size, int &min, int &max, int &ran
     mode = findMode(integers);
     median = findMedian(integers);
     sum = findSum(integers);
-    arithmeticMean = findArithmeticMean(sum, size);
+    arithmeticMean = findArithmeticMean(integers);
     harmonicMean = findHarmonicMean(integers);
-    standardDeviation = findStandardDeviation(integers, arithmeticMean);
+    standardDeviation = findStandardDeviation(integers);
     interquartileRange = findInterquartileRange(integers);
     
     std::chrono::steady_clock::time_point finish = std::chrono::high_resolution_clock::now();
