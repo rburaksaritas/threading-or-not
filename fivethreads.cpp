@@ -62,9 +62,7 @@ void *block4(void *voidArgs){
 
 void *block5(void *voidArgs){
     threadArgs3 *args5 = (threadArgs3*)voidArgs;
-    printf("stddev: %g\n", args5->result1);
     args5->result1 = findStandardDeviation(args5->integers);
-    printf("stddev: %g\n", args5->result1);
     args5->result2 = findInterquartileRange(args5->integers);
     pthread_exit(0);
 }
