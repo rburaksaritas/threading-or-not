@@ -70,7 +70,7 @@ void *block5(void *voidArgs){
 /**
  * Function that runs the functions in 5 seperate pthreads.
 */
-int fiveThreads(std::vector<int> integers, int &size, int &min, int &max, int &range, 
+int fiveThreads(std::vector<int> integers, int &min, int &max, int &range, 
             int &mode, double &median, int &sum, double &arithmeticMean, 
             double &harmonicMean, double &standardDeviation, double &interquartileRange, 
             std::chrono::duration<double> &elapsed){

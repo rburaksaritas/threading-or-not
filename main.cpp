@@ -175,13 +175,12 @@ int printResults(int &min, int &max, int &range, int &mode, double &median,
  * Executes the functions in one thread.
  * Keeps track of time with the help of <chrono>.
 */
-int oneThread(std::vector<int> integers, int &size, int &min, int &max, int &range, 
+int oneThread(std::vector<int> integers, int &min, int &max, int &range, 
             int &mode, double &median, int &sum, double &arithmeticMean, 
             double &harmonicMean, double &standardDeviation, double &interquartileRange, 
             std::chrono::duration<double> &elapsed){
     std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
     
-    size = integers.size();
     min = findMin(integers);
     max = findMax(integers);
     range = findRange(integers);
@@ -199,12 +198,12 @@ int oneThread(std::vector<int> integers, int &size, int &min, int &max, int &ran
     return 1;
 }
 
-int fiveThreads(std::vector<int> integers, int &size, int &min, int &max, int &range, 
+int fiveThreads(std::vector<int> integers, int &min, int &max, int &range, 
             int &mode, double &median, int &sum, double &arithmeticMean, 
             double &harmonicMean, double &standardDeviation, double &interquartileRange, 
             std::chrono::duration<double> &elapsed);
 
- int tenThreads(std::vector<int> integers, int &size, int &min, int &max, int &range, 
+ int tenThreads(std::vector<int> integers, int &min, int &max, int &range, 
             int &mode, double &median, int &sum, double &arithmeticMean, 
             double &harmonicMean, double &standardDeviation, double &interquartileRange, 
             std::chrono::duration<double> &elapsed);           
@@ -226,7 +225,7 @@ int main(int argc, char *argv[]){
     double  median, arithmeticMean, harmonicMean, standardDeviation, interquartileRange = 0;
     std::chrono::duration<double> elapsed_1;
 
-    oneThread(integers, size, min, max, range, mode, median, sum, arithmeticMean, 
+    oneThread(integers, min, max, range, mode, median, sum, arithmeticMean, 
     harmonicMean, standardDeviation, interquartileRange, elapsed_1); // execute functions in a single thread.
     printResults(min, max, range, mode, median, sum, arithmeticMean, harmonicMean, 
     standardDeviation, interquartileRange, elapsed_1, 1); // print results to an output file.
@@ -235,7 +234,7 @@ int main(int argc, char *argv[]){
     median = 0.0; arithmeticMean = 0.0; harmonicMean = 0.0; standardDeviation = 0.0; interquartileRange = 0.0;
     std::chrono::duration<double> elapsed_2;
 
-    fiveThreads(integers, size, min, max, range, mode, median, sum, arithmeticMean, 
+    fiveThreads(integers, min, max, range, mode, median, sum, arithmeticMean, 
     harmonicMean, standardDeviation, interquartileRange, elapsed_2); // execute functions in 5 threads.
     printResults(min, max, range, mode, median, sum, arithmeticMean, harmonicMean, 
     standardDeviation, interquartileRange, elapsed_2, 2); // print results to an output file.
@@ -244,7 +243,7 @@ int main(int argc, char *argv[]){
     median = 0.0; arithmeticMean = 0.0; harmonicMean = 0.0; standardDeviation = 0.0; interquartileRange = 0.0;
     std::chrono::duration<double> elapsed_3;
 
-    tenThreads(integers, size, min, max, range, mode, median, sum, arithmeticMean, 
+    tenThreads(integers, min, max, range, mode, median, sum, arithmeticMean, 
     harmonicMean, standardDeviation, interquartileRange, elapsed_3); // execute functions in 10 threads.
     printResults(min, max, range, mode, median, sum, arithmeticMean, harmonicMean, 
     standardDeviation, interquartileRange, elapsed_3, 3); // print results to an output file.

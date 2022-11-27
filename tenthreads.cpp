@@ -87,7 +87,7 @@ void *block10(void *voidArgs){
 /**
  * Function that runs the functions in 10 seperate pthreads.
 */
-int tenThreads(std::vector<int> integers, int &size, int &min, int &max, int &range, 
+int tenThreads(std::vector<int> integers, int &min, int &max, int &range, 
             int &mode, double &median, int &sum, double &arithmeticMean, 
             double &harmonicMean, double &standardDeviation, double &interquartileRange, 
             std::chrono::duration<double> &elapsed){
