@@ -6,6 +6,11 @@
 #include <chrono>
 
 /**
+ * @author Ramazan Burak Saritas
+ * 2020400321
+*/
+
+/**
  * Generates a random integer between 1000 and 10000.
  * @return generated number
 */

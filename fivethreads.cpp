@@ -3,6 +3,11 @@
 #include <vector>
 #include <chrono>
 
+/**
+ * @author Ramazan Burak Saritas
+ * 2020400321
+*/
+
 int findMin(std::vector<int> integers);
 int findMax(std::vector<int> integers);
 int findRange(std::vector<int> integers);
