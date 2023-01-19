@@ -91,7 +91,7 @@ int fiveThreads(std::vector<int> integers, int &min, int &max, int &range,
     threadArgs3 args4 = {integers, arithmeticMean, harmonicMean};
     threadArgs3 args5 = {integers, standardDeviation, interquartileRange};
 
-    std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
     pthread_create(&t_id1, &attr, block1, &args1);
     pthread_create(&t_id2, &attr, block2, &args2);
@@ -105,7 +105,7 @@ int fiveThreads(std::vector<int> integers, int &min, int &max, int &range,
     pthread_join(t_id4, NULL);
     pthread_join(t_id5, NULL);
 
-    std::chrono::steady_clock::time_point finish = std::chrono::high_resolution_clock::now();
+    auto finish = std::chrono::high_resolution_clock::now();
     elapsed = finish - start;
 
     return 0;
