@@ -4,6 +4,7 @@
 #include <random>
 #include <vector>
 #include <chrono>
+#include <algorithm> 
 
 /**
  * @author Ramazan Burak Saritas
@@ -184,7 +185,7 @@ int oneThread(std::vector<int> integers, int &min, int &max, int &range,
             int &mode, double &median, int &sum, double &arithmeticMean, 
             double &harmonicMean, double &standardDeviation, double &interquartileRange, 
             std::chrono::duration<double> &elapsed){
-    std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
     
     min = findMin(integers);
     max = findMax(integers);
@@ -197,7 +198,7 @@ int oneThread(std::vector<int> integers, int &min, int &max, int &range,
     standardDeviation = findStandardDeviation(integers);
     interquartileRange = findInterquartileRange(integers);
     
-    std::chrono::steady_clock::time_point finish = std::chrono::high_resolution_clock::now();
+    auto finish = std::chrono::high_resolution_clock::now();
     elapsed = finish - start;
 
     return 1;
