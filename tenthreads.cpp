@@ -113,7 +113,7 @@ int tenThreads(std::vector<int> integers, int &min, int &max, int &range,
     threadArgs2 args9 = {integers, standardDeviation};
     threadArgs2 args10 = {integers, interquartileRange};
 
-    std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
     
     pthread_create(&t_id1, &attr, block01, &args1);
     pthread_create(&t_id2, &attr, block02, &args2);
@@ -138,7 +138,7 @@ int tenThreads(std::vector<int> integers, int &min, int &max, int &range,
     pthread_join(t_id9, NULL);
     pthread_join(t_id10, NULL);
     
-    std::chrono::steady_clock::time_point finish = std::chrono::high_resolution_clock::now();
+    auto finish = std::chrono::high_resolution_clock::now();
     elapsed = finish - start;
 
     return 0;
